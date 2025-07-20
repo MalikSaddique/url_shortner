@@ -1,7 +1,10 @@
 package config
 
 import (
+	"fmt"
 	"os"
+
+	"github.com/joho/godotenv"
 )
 
 type Config struct {
@@ -18,6 +21,9 @@ var Cfg Config
 
 func LoadConfig() (*Config, error) {
 	var cfg Config
+	if err := godotenv.Load(".env"); err != nil {
+		return nil, fmt.Errorf("error loading .env file: %v", err)
+	}
 
 	cfg.URLShortner.POSTGRES_HOST = os.Getenv("POSTGRES_HOST")
 	cfg.URLShortner.POSTGRES_PORT = os.Getenv("POSTGRES_PORT")

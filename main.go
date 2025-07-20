@@ -1,9 +1,7 @@
 package main
 
 import (
-	"fmt"
 	"log"
-	"net/http"
 
 	"github.com/MalikSaddique/url_shortner/config"
 	"github.com/MalikSaddique/url_shortner/db"
@@ -21,8 +19,5 @@ func main() {
 	if err := httpRouter.Engine.Run(":8003"); err != nil {
 		log.Fatalf("HTTP server failed to start: %s", err)
 	}
-	db.Connection()
-	fmt.Println("Server listening on port 8005")
-	http.ListenAndServe(":8005", nil)
 
 }

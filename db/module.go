@@ -1,14 +1,21 @@
 package db
 
-import "database/sql"
+import (
+	"database/sql"
+
+	"github.com/MalikSaddique/url_shortner/models"
+)
 
 type URLDB interface {
+	CreateURL(url models.URL, key string) (*models.URL, error)
 }
 
 type URLDBImpl struct {
 	Db *sql.DB
 }
 
-func NewURLDB() URLDB {
-	return &URLDBImpl{}
+func NewURLDB(db *sql.DB) URLDB {
+	return &URLDBImpl{
+		Db: db,
+	}
 }

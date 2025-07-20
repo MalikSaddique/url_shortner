@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"log"
 
+	_ "github.com/lib/pq"
+
 	"github.com/MalikSaddique/url_shortner/config"
 )
 

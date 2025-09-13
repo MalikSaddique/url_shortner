@@ -7,7 +7,7 @@ import (
 )
 
 type URLDB interface {
-	CreateURL(url models.URL, key string) (*models.URL, error)
+	CreateURL(url models.URL) (*models.URL, error)
 }
 
 type URLDBImpl struct {

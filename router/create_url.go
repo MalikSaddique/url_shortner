@@ -8,13 +8,13 @@ import (
 )
 
 func (r *Router) CreateURL(c *gin.Context) {
-	var req *models.URL
+	var req models.CreateURLRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err})
 		return
 	}
 	url := models.URL{
-		Long_URL: req.Long_URL,
+		LongURL: req.LongURL,
 	}
 	response, err := r.URLShortnerAPI.CreateURL(url)
 	if err != nil {
@@ -22,6 +22,9 @@ func (r *Router) CreateURL(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, response)
+	c.JSON(http.StatusOK, models.CreateURLResponse{
+		ShortURL: response.ShortURL,
+		LongURL:  response.LongURL,
+	})
 
 }

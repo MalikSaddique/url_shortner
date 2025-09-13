@@ -2,17 +2,23 @@ package api
 
 import (
 	"math/rand"
+	"strings"
+	"time"
 
 	"github.com/MalikSaddique/url_shortner/models"
 )
 
 func (api *URLShortnerAPIImpl) CreateURL(url models.URL) (*models.URL, error) {
-	if url.Long_URL[:4] != "http" && url.Long_URL[:5] != "https" {
-		url.Long_URL = "http://" + url.Long_URL
+	if !strings.HasPrefix(url.LongURL, "http://") && !strings.HasPrefix(url.LongURL, "https://") {
+		url.LongURL = "http://" + url.LongURL
 	}
+
 	key := generateKey(8)
 
-	response, err := api.urldb.CreateURL(url, key)
+	url.ShortURL = key
+	url.CreatedAt = time.Now()
+
+	response, err := api.urldb.CreateURL(url)
 	if err != nil {
 		return nil, err
 	}

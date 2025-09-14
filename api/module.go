@@ -7,6 +7,7 @@ import (
 
 type URLShortnerAPI interface {
 	CreateURL(url models.URL) (*models.URL, error)
+	GetByShortURL(short string) (*models.URL, error)
 }
 
 type URLShortnerAPIImpl struct {

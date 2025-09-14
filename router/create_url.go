@@ -14,7 +14,8 @@ func (r *Router) CreateURL(c *gin.Context) {
 		return
 	}
 	url := models.URL{
-		LongURL: req.LongURL,
+		LongURL:  req.LongURL,
+		ExpireAt: req.ExpireAt,
 	}
 	response, err := r.URLShortnerAPI.CreateURL(url)
 	if err != nil {
@@ -25,6 +26,7 @@ func (r *Router) CreateURL(c *gin.Context) {
 	c.JSON(http.StatusOK, models.CreateURLResponse{
 		ShortURL: response.ShortURL,
 		LongURL:  response.LongURL,
+		ExpireAt: response.ExpireAt,
 	})
 
 }

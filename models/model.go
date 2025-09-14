@@ -11,9 +11,11 @@ type URL struct {
 	CreatedAt  time.Time `json:"time"`
 }
 type CreateURLResponse struct {
-	ShortURL string `json:"short_url"`
-	LongURL  string `json:"long_url"`
+	ShortURL string    `json:"short_url"`
+	LongURL  string    `json:"long_url"`
+	ExpireAt time.Time `json:"expire_at"`
 }
 type CreateURLRequest struct {
-	LongURL string `json:"long_url"`
+	LongURL  string    `json:"long_url"`
+	ExpireAt time.Time `json:"expire_at,omitempty"`
 }

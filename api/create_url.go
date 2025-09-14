@@ -17,6 +17,9 @@ func (api *URLShortnerAPIImpl) CreateURL(url models.URL) (*models.URL, error) {
 
 	url.ShortURL = key
 	url.CreatedAt = time.Now()
+	if url.ExpireAt.IsZero() {
+		url.ExpireAt = time.Now().Add(30 * 24 * time.Hour)
+	}
 
 	response, err := api.urldb.CreateURL(url)
 	if err != nil {

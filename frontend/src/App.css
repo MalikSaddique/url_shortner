@@ -1,0 +1,157 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
+
+button {
+  padding: 12px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.response-container {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.success {
+  background-color: #f0f8f0;
+  border: 2px solid #4CAF50;
+}
+
+.error {
+  background-color: #fdf0f0;
+  border: 2px solid #f44336;
+}
+
+.url-info {
+  margin-top: 15px;
+}
+
+.url-row {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.short-url-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.short-url {
+  flex: 1;
+  background-color: white;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: monospace;
+  word-break: break-all;
+}
+
+.copy-btn, .test-btn {
+  padding: 8px 12px;
+  font-size: 14px;
+  min-width: 40px;
+  background-color: #2196F3;
+}
+
+.copy-btn:hover, .test-btn:hover {
+  background-color: #1976D2;
+}
+
+a {
+  color: #2196F3;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+a:hover {
+  text-decoration: underline;
+}

@@ -1,79 +1,54 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
 .container {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 h1 {
-  text-align: center;
+  text-align: center; /* Changed from left to center */
   color: #333;
   margin-bottom: 30px;
 }
 
 form {
-  display: flex;
-  gap: 10px;
   margin-bottom: 20px;
+  text-align: center; /* Center the form content */
 }
 
-input {
-  flex: 1;
+.form-group {
+  margin-bottom: 15px;
+  text-align: left; /* Keep form inputs left-aligned for better UX */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+  text-align: left; /* Keep labels left-aligned */
+}
+
+input, select {
+  width: 100%;
   padding: 12px;
   border: 2px solid #ddd;
   border-radius: 6px;
   font-size: 16px;
+  box-sizing: border-box;
 }
 
-input:focus {
+input:focus, select:focus {
   outline: none;
   border-color: #4CAF50;
 }
 
 button {
+  width: 100%;
   padding: 12px 20px;
   background-color: #4CAF50;
   color: white;
@@ -112,7 +87,7 @@ button:hover {
   margin-bottom: 15px;
 }
 
-label {
+.url-row label {
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
@@ -140,10 +115,37 @@ label {
   font-size: 14px;
   min-width: 40px;
   background-color: #2196F3;
+  width: auto;
 }
 
 .copy-btn:hover, .test-btn:hover {
   background-color: #1976D2;
+}
+
+.expiration-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.expiration-date {
+  background-color: white;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: inline-block;
+  color: #666;
+  font-family: monospace;
+}
+
+.time-remaining {
+  background-color: #e3f2fd;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #1976d2;
+  font-weight: bold;
+  display: inline-block;
 }
 
 a {
@@ -154,4 +156,23 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+  
+  .short-url-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .copy-btn, .test-btn {
+    width: 100%;
+  }
+  
+  .expiration-info {
+    flex-direction: column;
+  }
 }

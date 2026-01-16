@@ -5,14 +5,14 @@ import (
 
 	"database/sql"
 
-	"github.com/MalikSaddique/url_shortner/api"
+	"github.com/MalikSaddique/url_shortner/service"
 	"github.com/MalikSaddique/url_shortner/db"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
 type Router struct {
-	URLShortnerAPI api.URLShortnerAPI
+	URLShortnerAPI service.URLShortnerAPI
 	DBLayer        db.URLDB
 	Engine         *gin.Engine
 }
@@ -20,11 +20,11 @@ type Router struct {
 func NewRouter(database *sql.DB) *Router {
 	dbLayer := db.NewURLDB(database)
 
-	apiInput := api.NewURLShortnerAPIInput{
+	apiInput := service.NewURLShortnerAPIInput{
 		URLdb: dbLayer,
 	}
 
-	apiLayer := api.NewURLShortnerAPI(apiInput)
+	apiLayer := service.NewURLShortnerAPI(apiInput)
 	engine := gin.Default()
 
 	routes := &Router{

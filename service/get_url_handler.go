@@ -1,4 +1,4 @@
-package api
+package service
 
 import "github.com/MalikSaddique/url_shortner/models"
 

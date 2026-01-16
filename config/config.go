@@ -22,7 +22,7 @@ var Cfg Config
 func LoadConfig() (*Config, error) {
 	var cfg Config
 	if err := godotenv.Load(".env"); err != nil {
-		return nil, fmt.Errorf("error loading .env file: %v", err)
+		fmt.Printf("Error loading .env file: %v\n", err)
 	}
 
 	cfg.URLShortner.POSTGRES_HOST = os.Getenv("POSTGRES_HOST")

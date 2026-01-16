@@ -9,12 +9,13 @@ import (
 func (db *URLDBImpl) GetByShortURL(short string) (*models.URL, error) {
 	var url models.URL
 
-	query := "SELECT id, shorturl, longurl, time FROM url WHERE shorturl = $1 LIMIT 1"
+	query := "SELECT id, shorturl, longurl, time, expire_at FROM url WHERE shorturl = $1 LIMIT 1"
 	err := db.Db.QueryRow(query, short).Scan(
 		&url.Id,
 		&url.ShortURL,
 		&url.LongURL,
 		&url.CreatedAt,
+		&url.ExpireAt,
 	)
 	if err != nil {
 		if err == sql.ErrNoRows {

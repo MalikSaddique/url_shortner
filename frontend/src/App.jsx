@@ -5,7 +5,7 @@ function App() {
   const [long_url, setUrl] = useState('')
   const [expirationDays, setExpirationDays] = useState(30)
   const [response, setResponse] = useState(null)
-  const backendURL = import.meta.env.VITE_BACKEND_URL
+  const backendURL = (import.meta.env.VITE_BACKEND_URL || '/api').replace(/\/$/, '')
 
   const handleChange = (e) => {
     setUrl(e.target.value)

@@ -14,6 +14,7 @@ type Config struct {
 		POSTGRES_USER     string
 		POSTGRES_PASSWORD string
 		POSTGRES_DB       string
+		POSTGRES_SSLMODE  string
 	}
 }
 
@@ -21,7 +22,7 @@ var Cfg Config
 
 func LoadConfig() (*Config, error) {
 	var cfg Config
-	if err := godotenv.Load(".env"); err != nil {
+	if err := godotenv.Load(".env"); err != nil && !os.IsNotExist(err) {
 		fmt.Printf("Error loading .env file: %v\n", err)
 	}
 
@@ -30,6 +31,7 @@ func LoadConfig() (*Config, error) {
 	cfg.URLShortner.POSTGRES_USER = os.Getenv("POSTGRES_USER")
 	cfg.URLShortner.POSTGRES_PASSWORD = os.Getenv("POSTGRES_PASSWORD")
 	cfg.URLShortner.POSTGRES_DB = os.Getenv("POSTGRES_DB")
+	cfg.URLShortner.POSTGRES_SSLMODE = os.Getenv("POSTGRES_SSLMODE")
 
 	Cfg = cfg
 	return &cfg, nil

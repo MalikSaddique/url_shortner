@@ -21,13 +21,17 @@ func Connection() (*sql.DB, error) {
 	user := cfg.URLShortner.POSTGRES_USER
 	password := cfg.URLShortner.POSTGRES_PASSWORD
 	dbname := cfg.URLShortner.POSTGRES_DB
+	sslmode := cfg.URLShortner.POSTGRES_SSLMODE
 
 	if host == "" || port == "" || user == "" || password == "" || dbname == "" {
-		log.Fatal("Database credentials are not fully set in the environment variables")
+		return nil, fmt.Errorf("database credentials are not fully set in the environment variables")
+	}
+	if sslmode == "" {
+		sslmode = "disable"
 	}
 
-	dsn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
-		host, port, user, password, dbname)
+	dsn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s",
+		host, port, user, password, dbname, sslmode)
 	DB, err := sql.Open("postgres", dsn)
 	if err != nil {
 		return nil, fmt.Errorf("failed to open DB connection: %v", err)
